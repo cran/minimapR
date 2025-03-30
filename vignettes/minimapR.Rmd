@@ -26,7 +26,7 @@ library(minimapR)
 # Installation
 'minimap2' and 'samtools' must be installed on your system along with the R packages 'Rsamtools', 'git2r', and 'pafr'. 'minimap2' can be installed on various operating systems by running the following function or following the instruction from the output of the function. "/your/path/to/directory/for/install" should be replaced with the path to the directory where you want to install 'minimap2'.
 ```{r installation, eval = FALSE}
-minimap2_installation("/your/path/to/directory/for/install")
+minimap2_installation()
 ```
 
 check if dependencies were successfully installed.
@@ -41,9 +41,9 @@ We will download the reference genomes and the query sequences for the example. 
 ```{r download}
 tmp_folder <- tempdir()
 cat("Temporary folder is:", tmp_folder, "\n")
-href_url <- "https://github.com/jake-bioinfo/minimapR/raw/master/inst/extdata/GRCh38_chr1_50m.fa"
+href_url <- "https://github.com/jake-bioinfo/minimapR/raw/master/inst/extdata/GRCh38_chr1_130k.fa.gz"
 hfq_url <- "https://github.com/jake-bioinfo/minimapR/raw/master/inst/extdata/ont_hs_sample.fastq.gz"
-yref_url <- "https://github.com/jake-bioinfo/minimapR/raw/master/inst/extdata/S288C_ref_genome.fasta"
+yref_url <- "https://github.com/jake-bioinfo/minimapR/raw/master/inst/extdata/S288C_ref_genome.fasta.gz"
 yfq_url <- "https://github.com/jake-bioinfo/minimapR/raw/master/inst/extdata/yeast_sample_hifi.fastq.gz"
 url_list <- c(href_url, hfq_url, yref_url, yfq_url)
 lapply(url_list, function(x) download.file(x, destfile = file.path(tmp_folder, basename(x))))
