@@ -173,8 +173,20 @@ minimap2_installation <- function(verbose = TRUE) {
       if (verbose) {
         message("minimap2 is not installed on your system, detailed installation instructions are provided below.\n")
         message("Documentation for Windows install:\n")
-        message("1. minimapR requires 'conda' or 'mamba' to install minimap2.\n")
-        message("2. Download and install 'Anaconda' or 'Miniconda' from https://docs.conda.io/en/latest/miniconda.html\n")
+        message("1. install MSYS2 from https://www.msys2.org/ and follow the instructions to install it.\n")
+        message("2. Open the MINGW64 MSYS2 installation and run:\n")
+        message("   pacman -Syu\n")
+        message("   pacman -S mingw-w64-x86_64-samtools\n")
+        message("   pacman -S mingw-w64-x86_64-zlib mingw-w64-x86_64-gcc make autoconf automake libtool git\n")
+        message("3. Then run:\n")
+        message("   git clone https://github.com/lh3/minimap2.git
+                    cd minimap2
+                    make")
+        message("4. !! After installation, add the path to the MSYS2 binaries to your system PATH !!\n")
+        Sys.sleep(3)
+        mm2_install(verbose = verbose)
+        Sys.sleep(5)
+        samtools_install(verbose = verbose)
       }
     } else {
       message("'minimap2' is already installed. \n")
